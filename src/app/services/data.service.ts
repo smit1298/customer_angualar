@@ -10,9 +10,9 @@ export class DataService {
 
   getAllCustomers(): Customer[] {
     return[
-      { name: 'Peter', address: 'surulere', age: 100},
-      { name: 'John', address: 'abule egba', age: 102},
-      { name: 'Smit', address: 'houston-texas', age: 28},
+      {id: '1', name: 'Peter', address: 'surulere', age: 100},
+      {id: '2', name: 'John', address: 'abule egba', age: 102},
+      {id: '3', name: 'Smit', address: 'houston-texas', age: 28},
     ]
   }
 }

@@ -1,4 +1,14 @@
+<a class="btn btn-primary" routerLink="/customers/add">Add Customer</a>
 
-<ol>
-    <li *ngFor="let customer of customers">{{customer.name}}</li>
-</ol>
+<div class="row mt-4">
+    <div *ngFor="let customer of customers" class="col">
+        <div  class="card" style="width: 18rem;">
+            <img src="..." class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{customer.name}}</h5>
+                <p class="card-text">{{customer.address}}</p>
+                <a routerLink="/customers/edit/{{customer.id}}" class="btn btn-primary">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
