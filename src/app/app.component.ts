@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'customer_manager_angular';
+  name = 'Elev8 customer management';
+  description = 'This is the best customer manger solution in the markey';
+  imageURL = 'https://www.bradaronson.com/wp-content/uploads/2013/10/happy.jpg';
+
+  clickMe(){
+    // console.log('Button CLicked');
+    this.name = 'I am changed'
+  }
 }
