@@ -1,1 +1,28 @@
-<p>add-customer works!</p>
+<form #f="ngForm" (submit)="saveCustomer(f)">
+    <div class="mb-3">
+        <label for="name" class="form-label">Name</label>
+        <input required class="form-control" name="name" ngModel #name="ngModel">
+        <div *ngIf="name.touched && !name.valid" class="form-text" style="color: red;">Please enter your name</div>
+    </div>
+
+    <div class="mb-3">
+        <label for="address" class="form-label">Address</label>
+        <input required class="form-control" name="address"ngModel>
+    </div>
+
+    <div class="mb-3">
+        <label for="age" class="form-label">Age</label>
+        <input required type="number" min="18" class="form-control" name="age"ngModel>
+    </div>
+
+    <div class="mb-3">
+        <label for="imageUrl" class="form-label">Image Url</label>
+        <input class="form-control" name="imageUrl" ngModel #imageUrl="ngModel">
+    </div>
+
+    <div class="mb-3">
+        <img [src]="imageUrl.value">
+    </div>
+
+    <button type="submit" class="btn btn-primary" [disabled]="!f.form.valid">Save</button>
+</form>

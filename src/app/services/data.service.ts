@@ -1,18 +1,24 @@
 import { Injectable } from '@angular/core';
 import  Customer  from "../models/customer.model";
+import { HttpClient } from "@angular/common/http";
+import { Observable } from "rxjs";
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
-  getAllCustomers(): Customer[] {
-    return[
-      {id: '1', name: 'Peter', address: 'surulere', age: 100},
-      {id: '2', name: 'John', address: 'abule egba', age: 102},
-      {id: '3', name: 'Smit', address: 'houston-texas', age: 28},
-    ]
+  getAllCustomers():Observable<Customer[]> {
+    return this.http.get<Customer[]>('http://127.0.0.1:3000/customers');
+  }
+
+  addCustomer(customer: Customer): Observable<Customer>{
+    return this.http.post<Customer>('http://127.0.0.1:3000/customers', customer);
+  }
+  
+  getCustomer(id: string): Observable<Customer>{
+    return this.http.get<Customer>(`http://127.0.0.1:3000/customers/${id}`);
   }
 }

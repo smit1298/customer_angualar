@@ -10,13 +10,14 @@ import { DataService } from '../services/data.service';
 export class CustomerListComponent implements OnInit {
 
 
-
 customers: Customer[] = [];
 
 constructor(private dataService: DataService) { }
 
 ngOnInit(): void {
-  this.customers = this.dataService.getAllCustomers()
+  this.dataService.getAllCustomers().subscribe(cs =>{
+    this.customers = cs
+  })
 }
 }
 

@@ -1,4 +1,7 @@
+import { DataService } from '../services/data.service';
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import  Customer  from "../models/customer.model";
 
 @Component({
   selector: 'app-edit-customer',
@@ -7,9 +10,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditCustomerComponent implements OnInit {
 
-  constructor() { }
+  customer?: Customer;
+
+  constructor(private route: ActivatedRoute, private dataService: DataService) { }
 
   ngOnInit(): void {
+
+    this.route.paramMap.subscribe(params => {
+      const id = params.get('id');
+      console.log(id);
+      
+      if (id){
+      this.dataService.getCustomer(id).subscribe(cs => {
+        this.customer = cs;
+        console.log(this.customer);        
+      })
+    }
+    })
   }
 
 }
